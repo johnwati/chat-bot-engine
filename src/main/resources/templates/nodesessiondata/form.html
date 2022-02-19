@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>New NodeSessionData</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:if="${nodesessiondata.id == null}">New NodeSessionData</h1>
+		<h1 th:if="${nodesessiondata.id != null}">Edit NodeSessionData</h1>
+		<hr />
+		<form th:action="@{/nodesessiondatas}" th:method="@{${nodesessiondata.id == null} ? 'post' : 'put'}"
+			th:object="${nodesessiondata}">
+			<input type="hidden" th:field="*{id}" /> 
+			
+				<div class="form-group"> 
+					<label for="key">Key</label>  
+					<input id="key" name="key" type="text" class="form-control" th:field="*{key}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="value">Value</label>  
+					<input id="value" name="value" type="text" class="form-control" th:field="*{value}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="nodeId">NodeId</label>  
+					<input id="nodeId" name="nodeId" type="text" class="form-control" th:field="*{nodeId}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="sessionId">SessionId</label>  
+					<input id="sessionId" name="sessionId" type="text" class="form-control" th:field="*{sessionId}" />  
+				</div> 
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a th:href="@{/nodesessiondatas}" class="btn btn-default">Back</a>
+		</form>
+	</div>
+</body>
+</html>

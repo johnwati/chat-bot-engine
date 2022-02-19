@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>New Node</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:if="${node.id == null}">New Node</h1>
+		<h1 th:if="${node.id != null}">Edit Node</h1>
+		<hr />
+		<form th:action="@{/nodes}" th:method="@{${node.id == null} ? 'post' : 'put'}"
+			th:object="${node}">
+			<input type="hidden" th:field="*{id}" /> 
+			
+				<div class="form-group"> 
+					<label for="flowId">FlowId</label>  
+					<input id="flowId" name="flowId" type="text" class="form-control" th:field="*{flowId}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="name">Name</label>  
+					<input id="name" name="name" type="text" class="form-control" th:field="*{name}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="message">Message</label>  
+					<input id="message" name="message" type="text" class="form-control" th:field="*{message}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="condition">Condition</label>  
+					<input id="condition" name="condition" type="text" class="form-control" th:field="*{condition}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="nodeClass">NodeClass</label>  
+					<input id="nodeClass" name="nodeClass" type="text" class="form-control" th:field="*{nodeClass}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="html">Html</label>  
+					<input id="html" name="html" type="text" class="form-control" th:field="*{html}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="prevNode">PrevNode</label>  
+					<input id="prevNode" name="prevNode" type="text" class="form-control" th:field="*{prevNode}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="nextNode">NextNode</label>  
+					<input id="nextNode" name="nextNode" type="text" class="form-control" th:field="*{nextNode}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="onEnter">OnEnter</label>  
+					<input id="onEnter" name="onEnter" type="text" class="form-control" th:field="*{onEnter}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="onReceive">OnReceive</label>  
+					<input id="onReceive" name="onReceive" type="text" class="form-control" th:field="*{onReceive}" />  
+				</div> 
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a th:href="@{/nodes}" class="btn btn-default">Back</a>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>New NodeUserInput</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:if="${nodeuserinput.id == null}">New NodeUserInput</h1>
+		<h1 th:if="${nodeuserinput.id != null}">Edit NodeUserInput</h1>
+		<hr />
+		<form th:action="@{/nodeuserinputs}" th:method="@{${nodeuserinput.id == null} ? 'post' : 'put'}"
+			th:object="${nodeuserinput}">
+			<input type="hidden" th:field="*{id}" /> 
+			
+				<div class="form-group"> 
+					<label for="key">Key</label>  
+					<input id="key" name="key" type="text" class="form-control" th:field="*{key}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="value">Value</label>  
+					<input id="value" name="value" type="text" class="form-control" th:field="*{value}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="nodeId">NodeId</label>  
+					<input id="nodeId" name="nodeId" type="text" class="form-control" th:field="*{nodeId}" />  
+				</div> 
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a th:href="@{/nodeuserinputs}" class="btn btn-default">Back</a>
+		</form>
+	</div>
+</body>
+</html>

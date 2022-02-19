@@ -1,0 +1,5 @@
+package:com.jonwat.bot
+dataBaseName:mydb
+username:root
+password:root
+springVersion:1.x

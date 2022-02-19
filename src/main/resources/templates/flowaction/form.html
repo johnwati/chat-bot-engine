@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>New FlowAction</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:if="${flowaction.id == null}">New FlowAction</h1>
+		<h1 th:if="${flowaction.id != null}">Edit FlowAction</h1>
+		<hr />
+		<form th:action="@{/flowactions}" th:method="@{${flowaction.id == null} ? 'post' : 'put'}"
+			th:object="${flowaction}">
+			<input type="hidden" th:field="*{id}" /> 
+			
+				<div class="form-group"> 
+					<label for="nodeId">NodeId</label>  
+					<input id="nodeId" name="nodeId" type="text" class="form-control" th:field="*{nodeId}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="methodType">MethodType</label>  
+					<input id="methodType" name="methodType" type="text" class="form-control" th:field="*{methodType}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="language">Language</label>  
+					<input id="language" name="language" type="text" class="form-control" th:field="*{language}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="script">Script</label>  
+					<input id="script" name="script" type="text" class="form-control" th:field="*{script}" />  
+				</div> 
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a th:href="@{/flowactions}" class="btn btn-default">Back</a>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>New NextNode</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:if="${nextnode.id == null}">New NextNode</h1>
+		<h1 th:if="${nextnode.id != null}">Edit NextNode</h1>
+		<hr />
+		<form th:action="@{/nextnodes}" th:method="@{${nextnode.id == null} ? 'post' : 'put'}"
+			th:object="${nextnode}">
+			<input type="hidden" th:field="*{id}" /> 
+			
+				<div class="form-group"> 
+					<label for="nodeId">NodeId</label>  
+					<input id="nodeId" name="nodeId" type="text" class="form-control" th:field="*{nodeId}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="NextNodeId">NextNodeId</label>  
+					<input id="NextNodeId" name="NextNodeId" type="text" class="form-control" th:field="*{NextNodeId}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="OutPut">OutPut</label>  
+					<input id="OutPut" name="OutPut" type="text" class="form-control" th:field="*{OutPut}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="condition">Condition</label>  
+					<input id="condition" name="condition" type="text" class="form-control" th:field="*{condition}" />  
+				</div> 
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a th:href="@{/nextnodes}" class="btn btn-default">Back</a>
+		</form>
+	</div>
+</body>
+</html>

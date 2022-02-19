@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>New FlowSessionData</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h1 th:if="${flowsessiondata.id == null}">New FlowSessionData</h1>
+		<h1 th:if="${flowsessiondata.id != null}">Edit FlowSessionData</h1>
+		<hr />
+		<form th:action="@{/flowsessiondatas}" th:method="@{${flowsessiondata.id == null} ? 'post' : 'put'}"
+			th:object="${flowsessiondata}">
+			<input type="hidden" th:field="*{id}" /> 
+			
+				<div class="form-group"> 
+					<label for="key">Key</label>  
+					<input id="key" name="key" type="text" class="form-control" th:field="*{key}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="value">Value</label>  
+					<input id="value" name="value" type="text" class="form-control" th:field="*{value}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="type">Type</label>  
+					<input id="type" name="type" type="text" class="form-control" th:field="*{type}" />  
+				</div> 
+				<div class="form-group"> 
+					<label for="flowId">FlowId</label>  
+					<input id="flowId" name="flowId" type="text" class="form-control" th:field="*{flowId}" />  
+				</div> 
+
+			<button type="submit" class="btn btn-success">Save</button>
+			<a th:href="@{/flowsessiondatas}" class="btn btn-default">Back</a>
+		</form>
+	</div>
+</body>
+</html>

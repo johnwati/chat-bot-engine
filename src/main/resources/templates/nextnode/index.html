@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+ 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h1>List NextNode</h1>
+		<hr />
+		<a th:href="@{/nextnodes/new}">New NextNode</a><br/><br/>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>NodeId</th> 
+					<th>NextNodeId</th> 
+					<th>OutPut</th> 
+					<th>Condition</th> 
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="nextnode : ${listNextNode}">
+					<td th:text="${nextnode.nodeId}"></td> 
+					<td th:text="${nextnode.NextNodeId}"></td> 
+					<td th:text="${nextnode.OutPut}"></td> 
+					<td th:text="${nextnode.condition}"></td> 
+					<td>
+							<a th:href="@{/nextnodes/{id}(id = ${nextnode.id})}">Show</a> 
+					 		<a th:href="@{/nextnodes/{id}/edit(id = ${nextnode.id})}">Edit</a> 
+							<a href="#">Destroy</a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

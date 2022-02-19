@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+ 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h1>List FlowSessionData</h1>
+		<hr />
+		<a th:href="@{/flowsessiondatas/new}">New FlowSessionData</a><br/><br/>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Key</th> 
+					<th>Value</th> 
+					<th>Type</th> 
+					<th>FlowId</th> 
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="flowsessiondata : ${listFlowSessionData}">
+					<td th:text="${flowsessiondata.key}"></td> 
+					<td th:text="${flowsessiondata.value}"></td> 
+					<td th:text="${flowsessiondata.type}"></td> 
+					<td th:text="${flowsessiondata.flowId}"></td> 
+					<td>
+							<a th:href="@{/flowsessiondatas/{id}(id = ${flowsessiondata.id})}">Show</a> 
+					 		<a th:href="@{/flowsessiondatas/{id}/edit(id = ${flowsessiondata.id})}">Edit</a> 
+							<a href="#">Destroy</a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

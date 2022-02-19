@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout">
+<head>
+ 	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h1>List Node</h1>
+		<hr />
+		<a th:href="@{/nodes/new}">New Node</a><br/><br/>
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>FlowId</th> 
+					<th>Name</th> 
+					<th>Message</th> 
+					<th>Condition</th> 
+					<th>NodeClass</th> 
+					<th>Html</th> 
+					<th>PrevNode</th> 
+					<th>NextNode</th> 
+					<th>OnEnter</th> 
+					<th>OnReceive</th> 
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="node : ${listNode}">
+					<td th:text="${node.flowId}"></td> 
+					<td th:text="${node.name}"></td> 
+					<td th:text="${node.message}"></td> 
+					<td th:text="${node.condition}"></td> 
+					<td th:text="${node.nodeClass}"></td> 
+					<td th:text="${node.html}"></td> 
+					<td th:text="${node.prevNode}"></td> 
+					<td th:text="${node.nextNode}"></td> 
+					<td th:text="${node.onEnter}"></td> 
+					<td th:text="${node.onReceive}"></td> 
+					<td>
+							<a th:href="@{/nodes/{id}(id = ${node.id})}">Show</a> 
+					 		<a th:href="@{/nodes/{id}/edit(id = ${node.id})}">Edit</a> 
+							<a href="#">Destroy</a> 
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
